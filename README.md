@@ -1,12 +1,17 @@
 # enterprise-cloud
-整合企业级微服务必要的组件和代码结构规范
+整合企业级微服务必要的组件和统一代码结构规范
 
-## 项目介绍
-1. 服务的注册与发现(Eureka)
+## 项目模块
+1. 服务的注册与发现(eureka)
 2. 动态路由网关(zuul)
 3. 负载均衡、远程调用、熔断器(ribbon、feign、hystrix)
 4. 服务链路追踪(Sleuth、Zipkin)
 5. 断路器监控
+
+## 部署说明 ##
+先启动注册中心eureka,其他服务启动没有先后顺序  
+通过maven 命令执行mvn clean package  
+通过java -jar 启动每个模块的jar文件
 
 ## 代码分层说明
 ~~~
@@ -74,3 +79,15 @@ public class OrderServiceHystric implements IOrderService {
     }
 }
 ~~~
+
+## 服务演示 ##
+
+#### 通过网关访问服务 ####
+
+1. 请求http://127.0.0.1:8769/api-one/user/getOrderByUser?id=1  
+8769是网关的端口，api-one是路由前缀,配置文件指定了api-one路由到service-one服务  
+getOrderByUser里面的iOrderService实现类请求了service-two提供的远程接口   
+整个流程跑下来，完成了注册中心注册和发现、网关路由、不同服务之间通信的过程   
+
+2. 请求http://127.0.0.1:8769/api-two/order/listUserByOrder?orderId=22   
+流程是上面类似，这次是service-two调用service-one对外提供的服务
