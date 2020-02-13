@@ -36,7 +36,7 @@ public class UserController {
      * @return
      */
     @GetMapping(value = "getOrderByUser")
-    public GetOrderByUserDto test1(String id){
+    public GetOrderByUserDto getOrderByUser(String id){
         return iOrderService.getOrderByUser(id);
     }
 
