@@ -42,8 +42,9 @@
 存放spirng框架的配置对象，比如druidConfig,redidConfig类
 #### service ####
 存放普通的业务逻辑类，比如userService类，如果需要用到interface接口文件，也是存放这个路径下
-#### service.impl ####存放service目录interface的实现类，文件命名以Impl作为后缀
-#### service.remote####
+#### service.impl ####
+存放service目录interface的实现类，文件命名以Impl作为后缀
+#### service.remote ####
 存放微服务调用的interface,里面的接口以I作为前缀，如下模板
 ~~~
 @FeignClient(value = "SERVICE-TWO", fallback = OrderServiceHystric.class)
