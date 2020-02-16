@@ -5,7 +5,7 @@
 1. 服务的注册与发现(eureka)
 2. 动态路由网关(zuul)
 3. 负载均衡、远程调用、熔断器(ribbon、feign、hystrix)Feign默认是整合了Ribbon和Hystrix这两个框架
-4. 服务链路追踪(Sleuth、Zipkin)
+4. 服务链路追踪(sleuth、zipkin)
 5. 断路器监控(hystrix-dashboard)
 6. 断路器聚合监控(turbine)
 
@@ -101,7 +101,7 @@ getOrderByUser里面的iOrderService实现类请求了service-two提供的远程
 ![](doc/img/zipkin.png)
 
 
-#### 容错保护 ####
+#### 容错保护(降级) ####
 ##### 1.feign启用Hystrix(降级) ##### 
 微服务容错保护的是服务消费方,消费者自己定义一个fallback,避免服务提供方故障导致消费者请求线程等待或占用  
 演示过程中，不启动service-two,启动eureka,zuul,service-one,调用service-one的远程调用，
@@ -163,9 +163,15 @@ public class OrderServiceHystric implements IOrderService {
 ![](doc/img/static-hystrix.png)
 
 #### 熔断器聚合监控 ####
+
 ##### 1.打开聚合监控流 #####
 请求http://127.0.0.1:8989/turbine.stream  
+
 ##### 2.打开熔断器仪表盘业务 #####
 打开http://127.0.0.1:9100/hystrix
-##### 展示每个熔断器的指标 #####
+
+##### 3.展示每个熔断器的指标 #####
 ![](doc/img/hystrix-stream.png)
+
+##### 4.指标说明 #####
+![](doc/img/hystrix.png)
