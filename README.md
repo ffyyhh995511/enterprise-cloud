@@ -98,7 +98,7 @@ getOrderByUser里面的iOrderService实现类请求了service-two提供的远程
 
 
 #### 容错保护 ####
-###### 1.feign启用Hystrix(降级) ######  
+##### 1.feign启用Hystrix(降级) ##### 
 微服务容错保护的是服务消费方,消费者自己定义一个fallback,避免服务提供方故障导致消费者请求线程等待或占用  
 演示过程中，不启动service-two,启动eureka,zuul,service-one,调用service-one的远程调用，
 此时service-two作为服务提供方没有可用服务，因此触发service-one的熔断机制。  
@@ -120,7 +120,7 @@ public class OrderServiceHystric implements IOrderService {
     }
 }
 ~~~~
-###### 2.静态方法熔断(降级) ###### 
+##### 2.静态方法熔断(降级) #####
 ~~~~
 /***
      * 静态的容错
