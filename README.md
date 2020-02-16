@@ -4,7 +4,7 @@
 ## 项目模块
 1. 服务的注册与发现(eureka)
 2. 动态路由网关(zuul)
-3. 负载均衡、远程调用、熔断器(ribbon、feign、hystrix)
+3. 负载均衡、远程调用、熔断器(ribbon、feign、hystrix)Feign默认是整合了Ribbon和Hystrix这两个框架
 4. 服务链路追踪(Sleuth、Zipkin)
 5. 断路器监控
 
@@ -91,3 +91,7 @@ getOrderByUser里面的iOrderService实现类请求了service-two提供的远程
 
 2. 请求http://127.0.0.1:8769/api-two/order/listUserByOrder?orderId=22   
 流程是上面类似，这次是service-two调用service-one对外提供的服务
+
+#### 使用链路跟踪 ####
+1. 请求http://127.0.0.1:8770/zipkin/ 出现如下图  
+![](doc/img/zipkin.png)

@@ -9,10 +9,10 @@
 
 	<modules>
 		<module>eureka</module>
-    <module>zuul</module>
-    <module>service-one</module>
-    <module>service-two</module>
-    <module>zipkin</module>
+		<module>zuul</module>
+		<module>service-one</module>
+		<module>service-two</module>
+		<module>zipkin</module>
   </modules>
 
 	<parent>
