@@ -1,6 +1,7 @@
 package org.fyh.cloud.service.one.controller;
 
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.fyh.cloud.service.one.dto.GetOrderByUserDto;
 import org.fyh.cloud.service.one.service.UserService;
 import org.fyh.cloud.service.one.service.remote.IOrderService;
@@ -38,6 +39,39 @@ public class UserController {
     @GetMapping(value = "getOrderByUser")
     public GetOrderByUserDto getOrderByUser(String id){
         return iOrderService.getOrderByUser(id);
+    }
+
+    /***
+     * 静态的容错
+     * @param id
+     * @author fangyunhe
+     * @date 14:28 14:28
+     * @return java.util.HashMap
+     */
+    @HystrixCommand(fallbackMethod="getUserNameFallback")
+    @GetMapping(value = "getUserName")
+    public HashMap getUserName(Integer id){
+        if (id > 10){
+            throw new StackOverflowError();
+        }
+        HashMap map = new HashMap();
+        map.put("username", "rooster");
+        return map;
+    }
+
+    /***
+     *
+     * getUserName的fallback方法
+     * @param id
+     * @author fangyunhe
+     * @date 14:29 14:29
+     * @return java.util.HashMap
+     */
+    private HashMap getUserNameFallback(Integer id){
+        HashMap map = new HashMap();
+        map.put("username", "这是fallback");
+        map.put("id", id);
+        return map;
     }
 
 }

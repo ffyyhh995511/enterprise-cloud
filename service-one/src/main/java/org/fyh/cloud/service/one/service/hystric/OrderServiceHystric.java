@@ -17,7 +17,7 @@ public class OrderServiceHystric implements IOrderService {
     @Override
     public GetOrderByUserDto getOrderByUser(String id) {
         GetOrderByUserDto UserDto = new GetOrderByUserDto();
-        UserDto.setApplicationName("null");
+        UserDto.setApplicationName("返回熔断数据");
         return UserDto;
     }
 }
