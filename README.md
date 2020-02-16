@@ -6,7 +6,7 @@
 2. 动态路由网关(zuul)
 3. 负载均衡、远程调用、熔断器(ribbon、feign、hystrix)Feign默认是整合了Ribbon和Hystrix这两个框架
 4. 服务链路追踪(sleuth、zipkin)
-5. 断路器监控(hystrix-dashboard)
+5. 断路器监控(hystrix-dashboard),独立一个模块，为所有服务提供监控仪表盘
 6. 断路器聚合监控(turbine)
 
 ## 微服务架构 ##
