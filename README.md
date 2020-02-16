@@ -6,7 +6,11 @@
 2. 动态路由网关(zuul)
 3. 负载均衡、远程调用、熔断器(ribbon、feign、hystrix)Feign默认是整合了Ribbon和Hystrix这两个框架
 4. 服务链路追踪(Sleuth、Zipkin)
-5. 断路器监控
+5. 断路器监控(hystrix-dashboard)
+6. 断路器聚合监控(turbine)
+
+## 微服务架构 ##
+![](doc/img/architecture.png)
 
 ## 部署说明 ##
 先启动注册中心eureka,其他服务启动没有先后顺序  
@@ -157,3 +161,11 @@ public class OrderServiceHystric implements IOrderService {
 ~~~~
 请求http://127.0.0.1:8769/api-one/user/getUserName?id=100，如下图  
 ![](doc/img/static-hystrix.png)
+
+#### 熔断器聚合监控 ####
+##### 1.打开聚合监控流 #####
+请求http://127.0.0.1:8989/turbine.stream  
+##### 2.打开熔断器仪表盘业务 #####
+打开http://127.0.0.1:9100/hystrix
+##### 展示每个熔断器的指标 #####
+![](doc/img/hystrix-stream.png)
