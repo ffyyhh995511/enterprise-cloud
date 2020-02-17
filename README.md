@@ -177,7 +177,7 @@ public class OrderServiceHystric implements IOrderService {
 ![](doc/img/hystrix.png)
 
 
-#### 关于spring stream和spring bus ####
+#### 6.关于spring stream和spring bus ####
 两者都是对消息中间级(kafka,rabitmq)的封装,好比orm框架(mybatis)对jdbc的封装，  
 使开发者简化了底层的配置和逻辑，只需要关心业务，简单的使用框架所提供的消息发生和接收方法.  
 两者的区别是：stream把传统消息还是定义为消息发送和接收，bus把消息定位为监听事件
