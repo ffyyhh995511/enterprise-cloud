@@ -1,7 +1,7 @@
 # enterprise-cloud
 整合企业级微服务必要的组件和统一代码结构规范
 
-## 项目模块
+## 1.项目模块
 1. 服务的注册与发现(eureka)
 2. 动态路由网关(zuul)
 3. 负载均衡、远程调用、熔断器(ribbon、feign、hystrix)Feign默认是整合了Ribbon和Hystrix这两个框架
@@ -9,15 +9,15 @@
 5. 断路器监控(hystrix-dashboard),独立一个模块，为所有服务提供监控仪表盘
 6. 断路器聚合监控(turbine)
 
-## 微服务架构 ##
+## 2.微服务架构 ##
 ![](doc/img/architecture.png)
 
-## 部署说明 ##
+## 3.部署说明 ##
 先启动注册中心eureka,其他服务启动没有先后顺序  
 通过maven 命令执行mvn clean package  
 通过java -jar 启动每个模块的jar文件
 
-## 代码分层说明
+## 4.代码分层说明 ##
 ~~~
 ├─common
 ├─controller
@@ -84,9 +84,9 @@ public class OrderServiceHystric implements IOrderService {
 }
 ~~~
 
-## 服务演示 ##
+## 5.服务演示 ##
 
-#### 通过网关访问服务 ####
+#### 5.1通过网关访问服务 ####
 
 1. 请求http://127.0.0.1:8769/api-one/user/getOrderByUser?id=1  
 8769是网关的端口，api-one是路由前缀,配置文件指定了api-one路由到service-one服务  
@@ -96,12 +96,12 @@ getOrderByUser里面的iOrderService实现类请求了service-two提供的远程
 2. 请求http://127.0.0.1:8769/api-two/order/listUserByOrder?orderId=22   
 流程是上面类似，这次是service-two调用service-one对外提供的服务
 
-#### 使用链路跟踪 ####
+#### 5.2使用链路跟踪 ####
 1. 请求http://127.0.0.1:8770/zipkin/ 出现如下图  
 ![](doc/img/zipkin.png)
 
 
-#### 容错保护(降级) ####
+#### 5.3容错保护(降级) ####
 ##### 1.feign启用Hystrix(降级) ##### 
 微服务容错保护的是服务消费方,消费者自己定义一个fallback,避免服务提供方故障导致消费者请求线程等待或占用  
 演示过程中，不启动service-two,启动eureka,zuul,service-one,调用service-one的远程调用，
@@ -162,7 +162,7 @@ public class OrderServiceHystric implements IOrderService {
 请求http://127.0.0.1:8769/api-one/user/getUserName?id=100，如下图  
 ![](doc/img/static-hystrix.png)
 
-#### 熔断器聚合监控 ####
+#### 5.4熔断器聚合监控 ####
 
 ##### 1.打开聚合监控流 #####
 请求http://127.0.0.1:8989/turbine.stream  
