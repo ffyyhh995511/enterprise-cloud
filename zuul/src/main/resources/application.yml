@@ -15,6 +15,11 @@ zuul:
     api-b:
       path: /api-two/**
       serviceId: service-two
+  ribbon:
+    eager-load:
+      #开启zuul网关的立即加载（在zt调试很久）
+      enabled: true
+  #ignored-services: *
 
 #网关负载均衡超时时间（路由到其他服务的时间）
 ribbon:
