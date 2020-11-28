@@ -3,6 +3,7 @@ package org.fyh.cloud.service.one.controller;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.fyh.cloud.service.one.dto.GetOrderByUserDto;
+import org.fyh.cloud.service.one.dto.OrderListDto;
 import org.fyh.cloud.service.one.service.UserService;
 import org.fyh.cloud.service.one.service.remote.IOrderService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
+import java.util.List;
 
 @RestController
 @RequestMapping("user")
@@ -40,6 +42,14 @@ public class UserController {
     public GetOrderByUserDto getOrderByUser(String id){
         return iOrderService.getOrderByUser(id);
     }
+
+    @GetMapping(value = "getOrderList")
+    public List<OrderListDto>  getOrderList(){
+        List<OrderListDto> orderList = iOrderService.getOrderList();
+        return  orderList;
+    }
+
+
 
     /***
      * 静态的容错
