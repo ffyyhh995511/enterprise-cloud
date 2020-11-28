@@ -5,6 +5,7 @@ import org.fyh.cloud.service.two.dto.ListUserByOrderDto;
 import org.fyh.cloud.service.two.service.OrderService;
 import org.fyh.cloud.service.two.service.remote.IUserService;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.util.StopWatch;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,7 +42,12 @@ public class OrderController {
      */
     @GetMapping(value = "listUserByOrder")
     public List<ListUserByOrderDto> listUserByOrder(Integer orderId){
-        return iUserService.listUserByOrder(orderId);
+        StopWatch watch = new StopWatch("服务two调用服务one耗时时间");
+        watch.start("开始");
+        List<ListUserByOrderDto> list = iUserService.listUserByOrder(orderId);
+        watch.stop();
+        System.out.println(watch.prettyPrint());
+        return list;
     }
 
 

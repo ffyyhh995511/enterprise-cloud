@@ -2,6 +2,13 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
+    fetch-registry: true
+    registry-fetch-interval-seconds: 5
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}
+    lease-expiration-duration-in-seconds: 15
+    lease-renewal-interval-in-seconds: 5
 server:
   port: 8769
 spring:
@@ -19,7 +26,7 @@ zuul:
     eager-load:
       #开启zuul网关的立即加载（在zt调试很久）
       enabled: true
-  # 来忽略所有的默认路由，让所有路由配置均维护在配置文件中，以达到网关启动的时候就默认初始化好各个路由转发的负载均衡对象
+  #来忽略所有的默认路由，让所有路由配置均维护在配置文件中，以达到网关启动的时候就默认初始化好各个路由转发的负载均衡对象
   #http://127.0.0.1:8769/service-two/order/listUserByOrder (默认是zuul/service-name/api, 禁止访问)
   #http://127.0.0.1:8769/api-two/order/listUserByOrder (api-two替代service-name，维护在配置文件，可以访问)
   ignored-services: '*'
