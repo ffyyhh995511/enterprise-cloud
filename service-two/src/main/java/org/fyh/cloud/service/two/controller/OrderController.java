@@ -2,6 +2,7 @@ package org.fyh.cloud.service.two.controller;
 
 
 import org.fyh.cloud.service.two.dto.ListUserByOrderDto;
+import org.fyh.cloud.service.two.hystrix.QueryOrderIdCommand;
 import org.fyh.cloud.service.two.service.OrderService;
 import org.fyh.cloud.service.two.service.remote.IUserService;
 import org.springframework.beans.factory.annotation.Value;
@@ -63,6 +64,21 @@ public class OrderController {
         watch.stop();
         System.out.println(watch.prettyPrint());
         return userName;
+    }
+
+    /**
+     * 自定义熔断
+     * @return
+     */
+    @GetMapping(value = "queryByOrderId")
+    public Integer queryByOrderId(){
+        StopWatch watch = new StopWatch("自定义熔断");
+        watch.start("开始");
+        QueryOrderIdCommand queryOrderIdCommand = new QueryOrderIdCommand(orderService);
+        Integer execute = queryOrderIdCommand.execute();
+        watch.stop();
+        System.out.println(watch.prettyPrint());
+        return execute;
     }
 
 }

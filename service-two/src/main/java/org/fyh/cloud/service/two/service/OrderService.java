@@ -14,4 +14,8 @@ public class OrderService {
         map.put("13", 13);
         return map;
     }
+
+    public Integer queryByOrderId() {
+        return 1000;
+    }
 }
