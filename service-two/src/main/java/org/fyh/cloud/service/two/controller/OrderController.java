@@ -50,5 +50,19 @@ public class OrderController {
         return list;
     }
 
+    /**
+     * 发起远程调用
+     * @param id
+     * @return
+     */
+    @GetMapping(value = "getUserName")
+    public String getUserName(Integer id){
+        StopWatch watch = new StopWatch("服务two调用服务one耗时时间");
+        watch.start("开始");
+        String userName = iUserService.getUserName(id);
+        watch.stop();
+        System.out.println(watch.prettyPrint());
+        return userName;
+    }
 
 }

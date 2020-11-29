@@ -29,4 +29,15 @@ public class UserRemoteController {
     public List<ListUserByOrderDto> listUserByOrder(Integer orderId){
         return userService.listUserByOrder(orderId);
     }
+
+    /**
+     * 提供远程调用
+     * @param id
+     * @return
+     */
+    @GetMapping(value = "getUserName")
+    public String getUserName(Integer id){
+        return userService.getUserName(id);
+    }
+
 }

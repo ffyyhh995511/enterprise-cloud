@@ -14,4 +14,7 @@ public interface IUserService {
     @GetMapping(value = "remote/user/listUserByOrder")
     List<ListUserByOrderDto> listUserByOrder(@RequestParam(value = "orderId") Integer orderId);
 
+    @GetMapping(value = "remote/user/getUserName")
+    String getUserName(@RequestParam(value = "id") Integer id);
+
 }

@@ -22,4 +22,9 @@ public class UserServiceHystric implements IUserService {
         list.add(listUserByOrderDto);
         return list;
     }
+
+    @Override
+    public String getUserName(Integer id) {
+        return "熔断";
+    }
 }

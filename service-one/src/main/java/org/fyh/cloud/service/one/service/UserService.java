@@ -42,5 +42,9 @@ public class UserService {
         listUserByOrderDtos.add(dto2);
         return listUserByOrderDtos;
     }
+
+    public String getUserName(Integer id) {
+        return "your name id is" + id;
+    }
 }
 
