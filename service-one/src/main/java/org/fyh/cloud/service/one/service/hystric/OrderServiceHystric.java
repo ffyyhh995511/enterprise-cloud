@@ -6,7 +6,6 @@ import org.fyh.cloud.service.one.dto.OrderListDto;
 import org.fyh.cloud.service.one.service.remote.IOrderService;
 import org.springframework.stereotype.Component;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 

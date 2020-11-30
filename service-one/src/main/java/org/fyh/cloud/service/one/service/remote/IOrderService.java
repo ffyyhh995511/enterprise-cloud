@@ -5,7 +5,6 @@ import org.fyh.cloud.service.one.dto.OrderListDto;
 import org.fyh.cloud.service.one.service.hystric.OrderServiceHystric;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;

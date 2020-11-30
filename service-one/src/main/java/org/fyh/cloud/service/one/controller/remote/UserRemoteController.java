@@ -1,6 +1,5 @@
 package org.fyh.cloud.service.one.controller.remote;
 
-import org.fyh.cloud.service.one.dto.GetOrderByUserDto;
 import org.fyh.cloud.service.one.dto.ListUserByOrderDto;
 import org.fyh.cloud.service.one.service.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
