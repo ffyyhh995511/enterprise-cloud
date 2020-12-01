@@ -14,8 +14,7 @@
 		<module>service-two</module>
 		<module>zipkin</module>
 		<module>hystrix-dashboard</module>
-		<module>hystrix-dashboard</module>
-    <module>turbine</module>
+    	<module>turbine</module>
   </modules>
 
 	<parent>
