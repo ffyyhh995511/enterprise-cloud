@@ -44,7 +44,7 @@ public class OrderRemoteController {
      * @return
      */
     @GetMapping(value = "getOrderList")
-    List<OrderListDto> getOrderList(){
+    public List<OrderListDto> getOrderList(){
         OrderListDto orderListDto1 = new OrderListDto();
         orderListDto1.setOrderId(new Long(1));
         orderListDto1.setOrderName("apple 11 pro");
