@@ -1,6 +1,7 @@
 package org.fyh.cloud.service.two.controller.remote;
 
 
+import lombok.extern.slf4j.Slf4j;
 import org.fyh.cloud.service.two.dto.OrderListDto;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,7 @@ import java.util.List;
 /**
  * remote包目录下提供远程调用的http接口
  */
+@Slf4j
 @RestController
 @RequestMapping("remote/order")
 public class OrderRemoteController {
@@ -24,17 +26,25 @@ public class OrderRemoteController {
     @Value("${spring.application.name}")
     private String applicationName;
 
+    private int time = 0;
+
     /**
      * 提供远程调用的http接口
      * @return
      */
     @GetMapping(value = "getOrderByUser")
-    public HashMap getOrderByUser(String id){
+    public HashMap getOrderByUser(String id) throws Exception {
+        time++;
+        log.warn("测试值大小 time={}", time);
         HashMap<Object, Object> map = new HashMap<>();
         map.put("port", port);
+        map.put("time", time);
         map.put("applicationName", applicationName);
         map.put("date", System.currentTimeMillis());
         map.put("id", id);
+        int sleep = 20000;
+        log.warn("睡眠时间{}", sleep);
+        Thread.sleep(sleep);
         return map;
     }
 

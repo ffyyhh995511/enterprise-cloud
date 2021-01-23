@@ -13,7 +13,7 @@ import java.util.List;
 public interface IOrderService {
 
     @GetMapping(value = "remote/order/getOrderByUser")
-    GetOrderByUserDto getOrderByUser(@RequestParam(value = "id") String id);
+    GetOrderByUserDto getOrderByUser(@RequestParam(value = "id") String id) throws Exception;
 
     @GetMapping(value = "remote/order/getOrderList")
     List<OrderListDto> getOrderList();

@@ -2,6 +2,7 @@ package org.fyh.cloud.service.one.controller;
 
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import lombok.extern.slf4j.Slf4j;
 import org.fyh.cloud.service.one.dto.GetOrderByUserDto;
 import org.fyh.cloud.service.one.dto.OrderListDto;
 import org.fyh.cloud.service.one.service.UserService;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.List;
-
+@Slf4j
 @RestController
 @RequestMapping("user")
 public class UserController {
@@ -23,6 +24,8 @@ public class UserController {
 
     @Resource
     private UserService userService;
+
+    private int requesetTime = 0;
 
     /**
      *
@@ -39,7 +42,9 @@ public class UserController {
      * @return
      */
     @GetMapping(value = "getOrderByUser")
-    public GetOrderByUserDto getOrderByUser(String id){
+    public GetOrderByUserDto getOrderByUser(String id) throws Exception{
+        requesetTime++;
+        log.info("重试次数requesetTime={}", requesetTime);
         return iOrderService.getOrderByUser(id);
     }
 
