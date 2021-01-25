@@ -11,7 +11,9 @@
 		<module>eureka</module>
 		<module>zuul</module>
 		<module>service-one</module>
+		<module>service-one-api</module>
 		<module>service-two</module>
+		<module>service-two-api</module>
 		<module>zipkin</module>
 		<module>hystrix-dashboard</module>
     	<module>turbine</module>
@@ -42,6 +44,11 @@
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-openfeign</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>io.github.openfeign</groupId>
+			<artifactId>feign-httpclient</artifactId>
 		</dependency>
 
 		<!--熔断、熔断监控三个包hystrix、hystrix-dashboard、actuator -->

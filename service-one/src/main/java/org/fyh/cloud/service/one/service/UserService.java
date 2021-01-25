@@ -1,6 +1,6 @@
 package org.fyh.cloud.service.one.service;
 
-import org.fyh.cloud.service.one.dto.ListUserByOrderDto;
+import org.fyh.cloud.service.one.api.dto.ListUserByOrderDto;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -43,7 +43,7 @@ public class UserService {
     }
 
     public String getUserName(Integer id) {
-        return "your name id is" + id;
+        return "your name id is " + id;
     }
 }
 

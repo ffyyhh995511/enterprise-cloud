@@ -2,9 +2,9 @@ package org.fyh.cloud.service.two.controller;
 
 
 import lombok.extern.slf4j.Slf4j;
-import org.fyh.cloud.service.two.dto.ListUserByOrderDto;
+import org.fyh.cloud.service.one.api.dto.ListUserByOrderDto;
 import org.fyh.cloud.service.two.service.OrderService;
-import org.fyh.cloud.service.two.service.remote.IUserService;
+import org.fyh.cloud.service.two.service.hystric.UserApiServiceHystric;
 import org.springframework.util.StopWatch;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +23,7 @@ public class OrderController {
     OrderService orderService;
 
     @Resource
-    private IUserService iUserService;
+    private UserApiServiceHystric userApiServiceHystric;
 
 
     /**
@@ -44,7 +44,7 @@ public class OrderController {
     public List<ListUserByOrderDto> listUserByOrder(Integer orderId){
         StopWatch watch = new StopWatch("服务two调用服务one耗时时间");
         watch.start("开始");
-        List<ListUserByOrderDto> list = iUserService.listUserByOrder(orderId);
+        List<ListUserByOrderDto> list = userApiServiceHystric.listUserByOrder(orderId);
         watch.stop();
         log.info(watch.prettyPrint());
         return list;
@@ -59,7 +59,7 @@ public class OrderController {
     public String getUserName(Integer id){
         StopWatch watch = new StopWatch("服务two调用服务one耗时时间");
         watch.start("开始");
-        String userName = iUserService.getUserName(id);
+        String userName = userApiServiceHystric.getUserName(id);
         watch.stop();
         log.info(watch.prettyPrint());
         return userName;

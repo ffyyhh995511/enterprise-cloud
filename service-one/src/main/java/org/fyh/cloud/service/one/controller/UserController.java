@@ -3,10 +3,10 @@ package org.fyh.cloud.service.one.controller;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import lombok.extern.slf4j.Slf4j;
-import org.fyh.cloud.service.one.dto.GetOrderByUserDto;
-import org.fyh.cloud.service.one.dto.OrderListDto;
 import org.fyh.cloud.service.one.service.UserService;
-import org.fyh.cloud.service.one.service.remote.IOrderService;
+import org.fyh.cloud.service.one.service.hystric.OrderApiServiceHystric;
+import org.fyh.cloud.service.two.api.dto.GetOrderByUserDto;
+import org.fyh.cloud.service.two.api.dto.OrderListDto;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,7 +20,7 @@ import java.util.List;
 public class UserController {
 
     @Resource
-    private IOrderService iOrderService;
+    private OrderApiServiceHystric orderApiServiceHystric;
 
     @Resource
     private UserService userService;
@@ -45,12 +45,12 @@ public class UserController {
     public GetOrderByUserDto getOrderByUser(String id) throws Exception{
         requesetTime++;
         log.info("重试次数requesetTime={}", requesetTime);
-        return iOrderService.getOrderByUser(id);
+        return orderApiServiceHystric.getOrderByUser(id);
     }
 
     @GetMapping(value = "getOrderList")
     public List<OrderListDto>  getOrderList(){
-        List<OrderListDto> orderList = iOrderService.getOrderList();
+        List<OrderListDto> orderList = orderApiServiceHystric.getOrderList();
         return  orderList;
     }
 

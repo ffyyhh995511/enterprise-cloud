@@ -1,4 +1,4 @@
-package org.fyh.cloud.service.one.dto;
+package org.fyh.cloud.service.two.api.dto;
 
 import lombok.Data;
 
