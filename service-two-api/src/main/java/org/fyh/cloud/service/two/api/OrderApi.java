@@ -18,6 +18,7 @@ public interface OrderApi {
 
     /**
      * 提供远程调用的http接口
+     *
      * @return
      */
     @GetMapping(value = "getOrderByUser")
@@ -26,6 +27,7 @@ public interface OrderApi {
 
     /**
      * 提供远程调用的http接口
+     *
      * @return
      */
     @GetMapping(value = "getOrderList")

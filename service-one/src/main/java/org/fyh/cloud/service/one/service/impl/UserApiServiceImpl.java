@@ -22,6 +22,7 @@ public class UserApiServiceImpl implements UserApi {
 
     /**
      * 提供远程调用
+     *
      * @param orderId
      * @return
      */
@@ -32,6 +33,7 @@ public class UserApiServiceImpl implements UserApi {
 
     /**
      * 提供远程调用
+     *
      * @param id
      * @return
      */

@@ -21,10 +21,11 @@ public class ManyOrderController {
 
     /**
      * 自定义熔断
+     *
      * @return
      */
     @GetMapping(value = "queryByOrderId")
-    public Integer queryByOrderId(){
+    public Integer queryByOrderId() {
         StopWatch watch = new StopWatch("自定义熔断");
         watch.start("开始");
         QueryOrderIdCommand queryOrderIdCommand = new QueryOrderIdCommand(orderService);

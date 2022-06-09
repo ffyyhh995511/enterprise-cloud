@@ -21,7 +21,7 @@ public interface UserApiServiceHystric extends UserApi {
     class UserApiFallbackFactory implements FallbackFactory<UserApiServiceHystric> {
         @Override
         public UserApiServiceHystric create(Throwable throwable) {
-            return new UserApiServiceHystric(){
+            return new UserApiServiceHystric() {
                 @Override
                 public List<ListUserByOrderDto> listUserByOrder(Integer orderId) {
                     log.error("listUserByOrder 熔断", throwable.getMessage(), throwable);

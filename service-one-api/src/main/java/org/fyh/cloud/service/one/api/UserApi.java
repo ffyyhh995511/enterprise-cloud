@@ -1,4 +1,5 @@
 package org.fyh.cloud.service.one.api;
+
 import org.fyh.cloud.service.one.api.dto.ListUserByOrderDto;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,7 @@ public interface UserApi {
 
     /**
      * 提供远程调用
+     *
      * @param orderId
      * @return
      */
@@ -23,6 +25,7 @@ public interface UserApi {
 
     /**
      * 提供远程调用
+     *
      * @param id
      * @return
      */

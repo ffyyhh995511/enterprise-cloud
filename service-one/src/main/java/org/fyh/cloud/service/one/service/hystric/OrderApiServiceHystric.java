@@ -26,7 +26,7 @@ public interface OrderApiServiceHystric extends OrderApi {
 
         @Override
         public OrderApiServiceHystric create(Throwable throwable) {
-            return new OrderApiServiceHystric(){
+            return new OrderApiServiceHystric() {
 
                 @Override
                 public GetOrderByUserDto getOrderByUser(String id) throws Exception {

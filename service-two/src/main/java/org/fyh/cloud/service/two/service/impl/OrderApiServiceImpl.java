@@ -31,6 +31,7 @@ public class OrderApiServiceImpl implements OrderApi {
 
     /**
      * 提供远程调用的http接口
+     *
      * @return
      */
     @Override
@@ -43,7 +44,7 @@ public class OrderApiServiceImpl implements OrderApi {
         map.put("applicationName", applicationName);
         map.put("date", System.currentTimeMillis());
         map.put("id", id);
-        int sleep = 100;
+        int sleep = 10;
         log.warn("睡眠时间{}", sleep);
         Thread.sleep(sleep);
         GetOrderByUserDto getOrderByUserDto = new GetOrderByUserDto();
@@ -55,6 +56,7 @@ public class OrderApiServiceImpl implements OrderApi {
 
     /**
      * 提供远程调用的http接口
+     *
      * @return
      */
     @Override

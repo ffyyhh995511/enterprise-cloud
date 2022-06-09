@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class UserService {
 
-    public HashMap<Object, Object> test(){
+    public HashMap<Object, Object> test() {
         HashMap<Object, Object> map = new HashMap<>();
         map.put("1", 1);
         map.put("12", 12);
@@ -22,6 +22,7 @@ public class UserService {
      * 这个方法提供远程调用，返还的对象只要结构一致就行
      * 可以Map --> object: key和objecgt的字段一一对应
      * 可以Object --> Object：不用的package和类名
+     *
      * @param orderId
      * @return
      */

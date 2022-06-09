@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-	<include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
 
-	<appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
-		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-			<!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
-			<pattern>%-30(%d{HH:mm:ss.SSS} [%thread]) %-5level %logger - %msg%n</pattern>
-			<!--最新的格式，以[]包装-->
-			<pattern>[%d][%-5level][%thread][%logger][%msg]%n</pattern>
-		</encoder>
-	</appender>
+    <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+            <pattern>%-30(%d{HH:mm:ss.SSS} [%thread]) %-5level %logger - %msg%n</pattern>
+            <!--最新的格式，以[]包装-->
+            <pattern>[%d][%-5level][%thread][%logger][%msg]%n</pattern>
+        </encoder>
+    </appender>
 
-	<root level="info">
-		<appender-ref ref="consoleAppender" />
-	</root>
+    <root level="info">
+        <appender-ref ref="consoleAppender"/>
+    </root>
 
 
 </configuration>

@@ -27,21 +27,21 @@ public class OrderController {
 
 
     /**
-     *
      * 提供给客户端（非微服务）的普通接口
      */
     @GetMapping(value = "test")
-    public HashMap one(){
+    public HashMap one() {
         return orderService.test();
     }
 
     /**
      * 发起远程调用
+     *
      * @param orderId
      * @return
      */
     @GetMapping(value = "listUserByOrder")
-    public List<ListUserByOrderDto> listUserByOrder(Integer orderId){
+    public List<ListUserByOrderDto> listUserByOrder(Integer orderId) {
         StopWatch watch = new StopWatch("服务two调用服务one耗时时间");
         watch.start("开始");
         List<ListUserByOrderDto> list = userApiServiceHystric.listUserByOrder(orderId);
@@ -52,11 +52,12 @@ public class OrderController {
 
     /**
      * 发起远程调用
+     *
      * @param id
      * @return
      */
     @GetMapping(value = "getUserName")
-    public String getUserName(Integer id){
+    public String getUserName(Integer id) {
         StopWatch watch = new StopWatch("服务two调用服务one耗时时间");
         watch.start("开始");
         String userName = userApiServiceHystric.getUserName(id);
